@@ -1,0 +1,424 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "title": "Rahul testing",
+      "type": "Course",
+      "createdBy": "Developer Lyearn2",
+      "lastEdited": "2024-10-09T14:51:00Z",
+      "academy": "Lyearn Academy",
+      "collection": "Test Courses",
+      "contentTags": ["Testing", "Development"]
+    },
+    {
+      "id": "2",
+      "title": "quizz",
+      "type": "Quiz",
+      "createdBy": "Developer Learn2",
+      "lastEdited": "2024-10-09T14:50:00Z",
+      "academy": "Learn Academy",
+      "collection": "Quizzes",
+      "contentTags": ["Assessment", "General Knowledge"]
+    },
+    {
+      "id": "3",
+      "title": "DNT1 Automation Quiz",
+      "type": "Quiz",
+      "createdBy": "Lyearn QA",
+      "lastEdited": "2024-10-09T14:50:00Z",
+      "academy": "Lyearn Academy",
+      "collection": "Automation",
+      "contentTags": ["QA", "Automation"]
+    },
+    {
+      "id": "4",
+      "title": "Course With Date Tag",
+      "type": "Course",
+      "createdBy": "Developer Lyearn2",
+      "lastEdited": "2024-10-09T12:00:00Z",
+      "academy": "Lyearn Academy",
+      "collection": "Date Tagged Courses",
+      "contentTags": ["Date", "Tagging"]
+    },
+    {
+      "id": "5",
+      "title": "11 July Course on meet for feedback",
+      "type": "Course",
+      "createdBy": "Ankit Choudhary",
+      "lastEdited": "2024-10-09T11:00:00Z",
+      "academy": "Feedback Academy",
+      "collection": "Feedback Courses",
+      "contentTags": ["Feedback", "Meeting"]
+    },
+    {
+      "id": "6",
+      "title": "Introduction to Python Programming",
+      "type": "Course",
+      "createdBy": "John Smith",
+      "lastEdited": "2024-10-08T09:30:00Z",
+      "academy": "Tech Academy",
+      "collection": "Programming Basics",
+      "contentTags": ["Python", "Programming", "Beginner"]
+    },
+    {
+      "id": "7",
+      "title": "Advanced Machine Learning Techniques",
+      "type": "Course",
+      "createdBy": "Dr. Alice Johnson",
+      "lastEdited": "2024-10-07T14:45:00Z",
+      "academy": "AI Institute",
+      "collection": "Data Science",
+      "contentTags": ["Machine Learning", "AI", "Advanced"]
+    },
+    {
+      "id": "8",
+      "title": "Web Development Fundamentals",
+      "type": "Course",
+      "createdBy": "Sarah Lee",
+      "lastEdited": "2024-10-06T11:20:00Z",
+      "academy": null,
+      "collection": "Web Technologies",
+      "contentTags": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "id": "9",
+      "title": "Data Structures and Algorithms Quiz",
+      "type": "Quiz",
+      "createdBy": "Prof. Robert Brown",
+      "lastEdited": "2024-10-05T16:55:00Z",
+      "academy": "Computer Science Institute",
+      "collection": "CS Fundamentals",
+      "contentTags": ["Data Structures", "Algorithms", "Assessment"]
+    },
+    {
+      "id": "10",
+      "title": "Digital Marketing Strategies",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-10-04T10:15:00Z",
+      "academy": "Business School",
+      "collection": "Marketing",
+      "contentTags": ["Digital Marketing", "SEO", "Social Media"]
+    },
+    {
+      "id": "11",
+      "title": "Cybersecurity Essentials",
+      "type": "Course",
+      "createdBy": "Emma Watson",
+      "lastEdited": "2024-10-03T13:40:00Z",
+      "academy": "InfoSec Academy",
+      "collection": "Security",
+      "contentTags": ["Cybersecurity", "Network Security", "Ethical Hacking"]
+    },
+    {
+      "id": "12",
+      "title": "Graphic Design Principles",
+      "type": "Course",
+      "createdBy": "Michael Chen",
+      "lastEdited": "2024-10-02T09:00:00Z",
+      "academy": null,
+      "collection": "Design",
+      "contentTags": ["Graphic Design", "Adobe Creative Suite", "Typography"]
+    },
+    {
+      "id": "13",
+      "title": "Financial Planning Basics",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-10-01T15:30:00Z",
+      "academy": "Finance Institute",
+      "collection": "Personal Finance",
+      "contentTags": ["Budgeting", "Investing", "Retirement Planning"]
+    },
+    {
+      "id": "14",
+      "title": "Mobile App Development with React Native",
+      "type": "Course",
+      "createdBy": "David Kim",
+      "lastEdited": "2024-09-30T11:25:00Z",
+      "academy": "Mobile Dev Academy",
+      "collection": "App Development",
+      "contentTags": ["React Native", "Mobile", "JavaScript"]
+    },
+    {
+      "id": "15",
+      "title": "Introduction to Quantum Computing",
+      "type": "Course",
+      "createdBy": "Dr. Samantha Patel",
+      "lastEdited": "2024-09-29T14:50:00Z",
+      "academy": "Quantum Institute",
+      "collection": "Advanced Computing",
+      "contentTags": ["Quantum Computing", "Physics", "Computer Science"]
+    },
+    {
+      "id": "16",
+      "title": "Management Fundamentals quiz",
+      "type": "Quiz",
+      "createdBy": "Jennifer Lopez",
+      "lastEdited": "2024-09-28T10:05:00Z",
+      "academy": null,
+      "collection": "Management",
+      "contentTags": ["Project Management", "Agile", "Scrum"]
+    },
+    {
+      "id": "17",
+      "title": "Data Visualization with D3.js",
+      "type": "Course",
+      "createdBy": "Thomas Anderson",
+      "lastEdited": "2024-09-27T16:20:00Z",
+      "academy": "Data Viz School",
+      "collection": "Data Science",
+      "contentTags": ["Data Visualization", "D3.js", "JavaScript"]
+    },
+    {
+      "id": "18",
+      "title": "Artificial Intelligence Ethics",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-09-26T09:45:00Z",
+      "academy": "AI Institute",
+      "collection": "AI and Society",
+      "contentTags": ["AI Ethics", "Philosophy", "Technology"]
+    },
+    {
+      "id": "19",
+      "title": "Cloud Computing Essentials",
+      "type": "Course",
+      "createdBy": "Maria Garcia",
+      "lastEdited": "2024-09-25T13:10:00Z",
+      "academy": "Cloud Tech Academy",
+      "collection": "Cloud Technologies",
+      "contentTags": ["Cloud Computing", "AWS", "Azure"]
+    },
+    {
+      "id": "20",
+      "title": "Digital Photography Techniques",
+      "type": "Course",
+      "createdBy": "Chris Evans",
+      "lastEdited": "2024-09-24T11:35:00Z",
+      "academy": null,
+      "collection": "Photography",
+      "contentTags": ["Photography", "Digital Editing", "Composition"]
+    },
+    {
+      "id": "21",
+      "title": "Blockchain Technology and Cryptocurrencies",
+      "type": "Course",
+      "createdBy": "Satoshi Nakamoto",
+      "lastEdited": "2024-09-23T15:00:00Z",
+      "academy": "Crypto Academy",
+      "collection": "Blockchain",
+      "contentTags": ["Blockchain", "Cryptocurrency", "Bitcoin"]
+    },
+    {
+      "id": "22",
+      "title": "Introduction to Robotics",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-09-22T10:25:00Z",
+      "academy": "Robotics Institute",
+      "collection": "Robotics",
+      "contentTags": ["Robotics", "Mechatronics", "AI"]
+    },
+    {
+      "id": "23",
+      "title": "Content Marketing Strategies",
+      "type": "Course",
+      "createdBy": "Emily Brown",
+      "lastEdited": "2024-09-21T14:40:00Z",
+      "academy": "Digital Marketing School",
+      "collection": "Marketing",
+      "contentTags": ["Content Marketing", "SEO", "Social Media"]
+    },
+    {
+      "id": "24",
+      "title": "UI/UX Design Principles",
+      "type": "Course",
+      "createdBy": "Alex Turner",
+      "lastEdited": "2024-09-20T09:15:00Z",
+      "academy": null,
+      "collection": "Design",
+      "contentTags": ["UI Design", "UX Design", "Wireframing"]
+    },
+    {
+      "id": "25",
+      "title": "Advanced SQL for Data Analysis",
+      "type": "Course",
+      "createdBy": "Olivia Martinez",
+      "lastEdited": "2024-09-19T13:30:00Z",
+      "academy": "Data Academy",
+      "collection": "Data Science",
+      "contentTags": ["SQL", "Data Analysis", "Database Management"]
+    },
+    {
+      "id": "26",
+      "title": "Environmental Sustainability Practices",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-09-18T11:05:00Z",
+      "academy": "Green Institute",
+      "collection": "Sustainability",
+      "contentTags": ["Environment", "Sustainability", "Green Technology"]
+    },
+    {
+      "id": "27",
+      "title": "Game Development with Unity",
+      "type": "Course",
+      "createdBy": "Ryan Reynolds",
+      "lastEdited": "2024-09-17T15:20:00Z",
+      "academy": "Game Dev Academy",
+      "collection": "Game Development",
+      "contentTags": ["Unity", "C#", "3D Modeling"]
+    },
+    {
+      "id": "28",
+      "title": "Introduction to Bioinformatics",
+      "type": "Course",
+      "createdBy": "Dr. Jane Foster",
+      "lastEdited": "2024-09-16T10:45:00Z",
+      "academy": "BioTech Institute",
+      "collection": "Biotechnology",
+      "contentTags": ["Bioinformatics", "Genomics", "Data Analysis"]
+    },
+    {
+      "id": "29",
+      "title": "DevOps Best Practices",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-09-15T14:00:00Z",
+      "academy": "DevOps School",
+      "collection": "Software Development",
+      "contentTags": ["DevOps", "CI/CD", "Containerization"]
+    },
+    {
+      "id": "30",
+      "title": "Social Media Marketing Mastery",
+      "type": "Course",
+      "createdBy": "Sophie Turner",
+      "lastEdited": "2024-09-14T09:35:00Z",
+      "academy": null,
+      "collection": "Marketing",
+      "contentTags": ["Social Media", "Digital Marketing", "Content Strategy"]
+    },
+    {
+      "id": "31",
+      "title": "Artificial Neural Networks",
+      "type": "Course",
+      "createdBy": "Dr. Alan Turing",
+      "lastEdited": "2024-09-13T13:50:00Z",
+      "academy": "AI Institute",
+      "collection": "Machine Learning",
+      "contentTags": ["Neural Networks", "Deep Learning", "AI"]
+    },
+    {
+      "id": "32",
+      "title": "Agile Project Management",
+      "type": "Course",
+      "createdBy": null,
+      "lastEdited": "2024-09-12T11:15:00Z",
+      "academy": "Management Institute",
+      "collection": "Project Management",
+      "contentTags": ["Agile", "Scrum", "Kanban"]
+    },
+    {
+      "id": "33",
+      "title": "Cryptocurrency Trading Strategies",
+      "type": "Course",
+      "createdBy": "Warren Buffett",
+      "lastEdited": "2024-09-11T15:30:00Z",
+      "academy": "Crypto Academy",
+      "collection": "Finance",
+      "contentTags": ["Cryptocurrency", "Trading", "Investment"]
+    },
+    {
+      "id": "34",
+      "title": "Introduction to 3D Printing",
+      "type": "Course",
+      "createdBy": "Elon Musk",
+      "lastEdited": "2024-09-10T10:00:00Z",
+      "academy": null,
+      "collection": "Manufacturing",
+      "contentTags": ["3D Printing", "Additive Manufacturing", "CAD"]
+    },
+    {
+      "id": "35",
+      "title": "Cybersecurity Risk Management",
+      "type": "Quiz",
+      "createdBy": null,
+      "lastEdited": "2024-09-09T14:15:00Z",
+      "academy": "InfoSec Academy",
+      "collection": "Security",
+      "contentTags": ["Cybersecurity", "Risk Management", "Compliance"]
+    },
+    {
+      "id": "36",
+      "title": "Digital Art and Illustration",
+      "type": "Course",
+      "createdBy": "Frida Kahlo",
+      "lastEdited": "2024-09-08T09:40:00Z",
+      "academy": "Digital Arts School",
+      "collection": "Art",
+      "contentTags": ["Digital Art", "Illustration", "Graphic Design"]
+    },
+    {
+      "id": "37",
+      "title": "Big Data Analytics with Hadoop",
+      "type": "Course",
+      "createdBy": "Ada Lovelace",
+      "lastEdited": "2024-09-07T13:55:00Z",
+      "academy": "Data Academy",
+      "collection": "Big Data",
+      "contentTags": ["Big Data", "Hadoop", "Data Analytics"]
+    },
+    {
+      "id": "38",
+      "title": "Renewable Energy Technologies",
+      "type": "Quiz",
+      "createdBy": null,
+      "lastEdited": "2024-09-06T11:20:00Z",
+      "academy": "Green Institute",
+      "collection": "Sustainability",
+      "contentTags": ["Renewable Energy", "Solar", "Wind Power"]
+    },
+    {
+      "id": "39",
+      "title": "Virtual Reality Development",
+      "type": "Course",
+      "createdBy": "Mark Zuckerberg",
+      "lastEdited": "2024-09-05T15:35:00Z",
+      "academy": "VR/AR Academy",
+      "collection": "Emerging Technologies",
+      "contentTags": ["Virtual Reality", "Unity", "3D Modeling"]
+    },
+    {
+      "id": "40",
+      "title": "Introduction to Neuroscience",
+      "type": "Course",
+      "createdBy": "Dr. Oliver Sacks",
+      "lastEdited": "2024-09-04T10:05:00Z",
+      "academy": null,
+      "collection": "Neuroscience",
+      "contentTags": ["Neuroscience", "Brain", "Cognitive Science"]
+    },
+    {
+      "id": "41",
+      "title": "Cloud Security Best Practices",
+      "type": "Quiz",
+      "createdBy": null,
+      "lastEdited": "2024-09-03T14:20:00Z",
+      "academy": "Cloud Tech Academy",
+      "collection": "Security",
+      "contentTags": ["Cloud Security", "Cybersecurity", "Network Security"]
+    },
+    {
+      "id": "42",
+      "title": "Data Privacy and GDPR Compliance",
+      "type": "Course",
+      "createdBy": "Edward Snowden",
+      "lastEdited": "2024-09-02T09:45:00Z",
+      "academy": "Law and Technology Institute",
+      "collection": "Legal",
+      "contentTags": ["Data Privacy", "GDPR", "Compliance"]
+    }
+  ]
+}
