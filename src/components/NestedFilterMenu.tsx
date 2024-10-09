@@ -36,21 +36,19 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
   return (
     <div>
       <div className="flex-col h-80 overflow-y-auto">
-        <div className="p-2">
-          {selectedOptionsArray.length > 0 && (
-            <>
-              <h3 className="font-bold mb-2">Selected</h3>
-              {selectedOptionsArray.map((option) => (
-                <OptionComponent
-                  key={option}
-                  option={option}
-                  isSelected={true}
-                  onChange={handleCheckboxChange}
-                />
-              ))}
-            </>
-          )}
-        </div>
+        {selectedOptionsArray.length > 0 && (
+          <div className="p-2">
+            <h3 className="font-bold mb-2">Selected</h3>
+            {selectedOptionsArray.map((option) => (
+              <OptionComponent
+                key={option}
+                option={option}
+                isSelected={true}
+                onChange={handleCheckboxChange}
+              />
+            ))}
+          </div>
+        )}
         <div className="p-2">
           <h3 className="font-bold mb-2">All</h3>
           {options.map((option) => (

@@ -17,10 +17,17 @@ const FilterBar: React.FC<FilterBarProps> = ({
   setActiveFilters,
 }) => {
   const [isDropdownVisible, setDropdownVisible] = useState<boolean>(false);
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
   const handleAddFilter = (newFilter: Filter) => {
     setActiveFilters([...activeFilters, newFilter]);
     setDropdownVisible(false);
+    setSelectedFilter(null);
+  };
+
+  const handleFilterClick = (filterKey: string) => {
+    setSelectedFilter(filterKey);
+    setDropdownVisible(true);
   };
 
   const filterOptionsByKey = filterOptions.reduce(
@@ -40,6 +47,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               <FilterItem
                 key={index}
                 filter={`${filter.key}: ${filter.value}`}
+                onClick={() => handleFilterClick(filter.key)}
               />
             ))}
           </div>
@@ -55,6 +63,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         <FilterDropdown
           onSave={handleAddFilter}
           optionsByKey={filterOptionsByKey}
+          selectedFilter={selectedFilter}
         />
       )}
     </div>
