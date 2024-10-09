@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 import FilterItem from "./FilterItem";
 import { getNestedFilterOptions } from "../helpers";
-import { filterOptions } from "../constants";
+import { FILTER_OPTIONS } from "../constants";
 import { CatalogItem, Filter } from "../types";
 
 interface FilterBarProps {
@@ -20,7 +20,30 @@ const FilterBar: React.FC<FilterBarProps> = ({
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
   const handleAddFilter = (newFilter: Filter) => {
-    setActiveFilters([...activeFilters, newFilter]);
+    const existingFilterIndex = activeFilters.findIndex(
+      (filter) => filter.key === newFilter.key
+    );
+    // Add new filter if it doesn't exist
+    if (existingFilterIndex === -1) {
+      setActiveFilters((prevActiveFilter) => [
+        ...prevActiveFilter,
+        ...(newFilter.value.length > 0 ? [newFilter] : []),
+      ]);
+      return;
+    }
+    // Remove filter if value is empty
+    if (newFilter.value.length === 0) {
+      setActiveFilters((prevActiveFilter) =>
+        prevActiveFilter.filter((filter) => filter.key !== newFilter.key)
+      );
+      return;
+    }
+
+    setActiveFilters((prevActiveFilter) =>
+      prevActiveFilter.map((filter) =>
+        filter.key === newFilter.key ? newFilter : filter
+      )
+    );
     setDropdownVisible(false);
     setSelectedFilter(null);
   };
@@ -30,7 +53,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
     setDropdownVisible(true);
   };
 
-  const filterOptionsByKey = filterOptions.reduce(
+  const handleDropdownClose = () => {
+    setDropdownVisible(false);
+    setSelectedFilter(null);
+  };
+
+  const filterOptionsByKey = FILTER_OPTIONS.reduce(
     (acc, option) => {
       acc[option.key] = getNestedFilterOptions(catalogData, option.key);
       return acc;
@@ -46,7 +74,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
             {activeFilters.map((filter, index) => (
               <FilterItem
                 key={index}
-                filter={`${filter.key}: ${filter.value}`}
+                filter={filter}
                 onClick={() => handleFilterClick(filter.key)}
               />
             ))}
@@ -64,6 +92,10 @@ const FilterBar: React.FC<FilterBarProps> = ({
           onSave={handleAddFilter}
           optionsByKey={filterOptionsByKey}
           selectedFilter={selectedFilter}
+          onClose={handleDropdownClose}
+          selectedValues={
+            activeFilters.find((filter) => filter.key === selectedFilter)?.value
+          }
         />
       )}
     </div>

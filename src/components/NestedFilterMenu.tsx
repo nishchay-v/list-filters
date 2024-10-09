@@ -4,17 +4,21 @@ import { Filter } from "../types";
 
 interface NestedFilterMenuProps {
   onSave: (filter: Filter) => void;
+  onClose: () => void;
   options: string[];
-  selectedFilter: string; // Assuming this is passed as a prop
+  selectedFilter: string;
+  selectedValues: string[] | undefined;
 }
 
 const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
   onSave,
+  onClose,
   options,
   selectedFilter,
+  selectedValues,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState<Set<string>>(
-    new Set()
+    new Set(selectedValues)
   );
 
   const handleCheckboxChange = (option: string) => {
@@ -25,6 +29,17 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
         : newSelected.add(option);
       return newSelected;
     });
+  };
+
+  const handleClearFilter = () => {
+    setSelectedOptions(new Set());
+    onSave({ key: selectedFilter, value: [] });
+    onClose();
+  };
+
+  const handleApplyFilter = () => {
+    onSave({ key: selectedFilter, value: selectedOptionsArray });
+    onClose();
   };
 
   // Memoized array version of selectedOptions for rendering purposes
@@ -61,14 +76,20 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
           ))}
         </div>
       </div>
-      <button
-        className="mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        onClick={() =>
-          onSave({ key: selectedFilter, value: selectedOptionsArray })
-        }
-      >
-        Save
-      </button>
+      <div className="flex justify-between m-2">
+        <button
+          className=" p-2  text-gray-500 hover:text-gray-800"
+          onClick={handleClearFilter}
+        >
+          Clear
+        </button>
+        <button
+          className=" p-2  text-gray-500 hover:text-gray-800"
+          onClick={handleApplyFilter}
+        >
+          Apply
+        </button>
+      </div>
     </div>
   );
 };

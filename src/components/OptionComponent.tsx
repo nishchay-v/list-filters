@@ -12,14 +12,13 @@ const OptionComponent: React.FC<OptionComponentProps> = ({
   onChange,
 }) => {
   return (
-    <div key={option} className="flex items-center mb-1">
+    <div key={option} className="flex items-center mb-1 p-1 justify-between">
+      <span className="mr-2">{option}</span>
       <input
         type="checkbox"
         checked={isSelected}
         onChange={() => onChange(option)}
-        className="mr-2"
       />
-      <span>{option}</span>
     </div>
   );
 };
