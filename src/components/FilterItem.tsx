@@ -3,10 +3,11 @@ import { Filter } from "../types";
 import { FILTER_LABELS } from "../constants";
 
 interface FilterItemProps {
-  filter: Filter;
-  onClick: () => void;
-  onClear: () => void;
-}
+    filter: Filter;
+    onClick: (event: React.MouseEvent<HTMLElement>) => void;   
+    onClear: () => void;
+  
+  }
 
 const FilterItem: React.FC<FilterItemProps> = ({
   filter,

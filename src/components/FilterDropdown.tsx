@@ -13,6 +13,7 @@ interface FilterDropdownProps {
   onClose: () => void;
   activeFilters: Filter[];
   allowBack: boolean;
+  anchorRect: DOMRect;
 }
 
 const FilterDropdown: React.FC<FilterDropdownProps> = ({
@@ -22,6 +23,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   onClose,
   activeFilters,
   allowBack,
+  anchorRect,
 }) => {
   const [internalSelectedFilter, setInternalSelectedFilter] = useState<
     string | null
@@ -95,7 +97,11 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   return (
     <div
       ref={dropdownRef}
-      className="absolute top-full mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-10"
+      className="absolute top-full w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-10"
+      style={{
+        left: `${anchorRect.left}px`,
+        minWidth: `${anchorRect.width}px`,
+      }}
     >
       {renderHeader()}
       {internalSelectedFilter === null ? (

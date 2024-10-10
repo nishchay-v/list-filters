@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import FilterDropdown from "./FilterDropdown";
 import FilterItem from "./FilterItem";
 import { getNestedFilterOptions } from "../helpers";
@@ -14,6 +14,7 @@ interface FilterBarProps {
 interface DropdownState {
   visible: boolean;
   allowBack: boolean;
+  anchorRect: DOMRect | null;
 }
 
 const FilterBar: React.FC<FilterBarProps> = ({
@@ -24,14 +25,15 @@ const FilterBar: React.FC<FilterBarProps> = ({
   const [dropdownState, setDropdownState] = useState<DropdownState>({
     visible: false,
     allowBack: false,
+    anchorRect: null,
   });
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const filterBarRef = useRef<HTMLDivElement>(null);
 
   const handleAddFilter = (newFilter: Filter) => {
     const existingFilterIndex = activeFilters.findIndex(
       (filter) => filter.key === newFilter.key
     );
-    // Add new filter if it doesn't exist
     if (existingFilterIndex === -1) {
       setActiveFilters((prevActiveFilter) => [
         ...prevActiveFilter,
@@ -39,7 +41,6 @@ const FilterBar: React.FC<FilterBarProps> = ({
       ]);
       return;
     }
-    // Remove filter if value is empty
     if (newFilter.value.length === 0) {
       setActiveFilters((prevActiveFilter) =>
         prevActiveFilter.filter((filter) => filter.key !== newFilter.key)
@@ -52,30 +53,46 @@ const FilterBar: React.FC<FilterBarProps> = ({
         filter.key === newFilter.key ? newFilter : filter
       )
     );
-    setDropdownState({
-      visible: false,
-      allowBack: false,
-    });
-    setSelectedFilter(null);
+    handleDropdownClose();
   };
 
-  const handleFilterClick = (filterKey: string) => {
+  const handleFilterClick = (filterKey: string, event: React.MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const filterBarRect = filterBarRef.current?.getBoundingClientRect();
+    if (filterBarRect) {
+      setDropdownState({
+        visible: true,
+        allowBack: false,
+        anchorRect: new DOMRect(
+          rect.left - filterBarRect.left,
+          rect.bottom - filterBarRect.top,
+          rect.width,
+          rect.height
+        ),
+      });
+    }
     setSelectedFilter(filterKey);
-    setDropdownState({
-      visible: true,
-      allowBack: false,
-    });
   };
 
-  const handleAddFilterButtonClick = () => {
-    setDropdownState({
-      visible: true,
-      allowBack: true,
-    });
+  const handleAddFilterButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const filterBarRect = filterBarRef.current?.getBoundingClientRect();
+    if (filterBarRect) {
+      setDropdownState({
+        visible: true,
+        allowBack: true,
+        anchorRect: new DOMRect(
+          rect.left - filterBarRect.left,
+          rect.bottom - filterBarRect.top,
+          rect.width,
+          rect.height
+        ),
+      });
+    }
   };
 
   const handleDropdownClose = () => {
-    setDropdownState({ visible: false, allowBack: false });
+    setDropdownState({ visible: false, allowBack: false, anchorRect: null });
     setSelectedFilter(null);
   };
 
@@ -88,7 +105,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
   );
 
   return (
-    <div className="relative flex flex-col p-4 bg-white rounded-lg space-y-2">
+    <div className="relative flex flex-col p-4 bg-white rounded-lg space-y-2" ref={filterBarRef}>
       <div className="flex items-center space-x-2 overflow-x-auto">
         {activeFilters.length > 0 && (
           <div className="flex space-x-2">
@@ -96,7 +113,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               <FilterItem
                 key={index}
                 filter={filter}
-                onClick={() => handleFilterClick(filter.key)}
+                onClick={event => handleFilterClick(filter.key, event)}
                 onClear={() => handleAddFilter({ key: filter.key, value: [] })}
               />
             ))}
@@ -111,7 +128,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           </button>
         )}
       </div>
-      {dropdownState.visible && (
+      {dropdownState.visible && dropdownState.anchorRect && (
         <FilterDropdown
           onSave={handleAddFilter}
           optionsByKey={filterOptionsByKey}
@@ -119,6 +136,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           onClose={handleDropdownClose}
           activeFilters={activeFilters}
           allowBack={dropdownState.allowBack}
+          anchorRect={dropdownState.anchorRect}
         />
       )}
     </div>
