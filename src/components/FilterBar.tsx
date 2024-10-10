@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 import FilterItem from "./FilterItem";
 import { getNestedFilterOptions } from "../helpers";
-import { FILTER_OPTIONS } from "../constants";
 import { CatalogItem, Filter } from "../types";
+import { FILTER_OPTIONS } from "../constants";
 
 interface FilterBarProps {
   catalogData: CatalogItem[];
-  activeFilters: { key: string; value: string[] }[];
+  activeFilters: Filter[];
   setActiveFilters: React.Dispatch<React.SetStateAction<Filter[]>>;
 }
 
@@ -89,7 +89,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
 
   return (
     <div className="relative flex flex-col p-4 bg-white rounded-lg space-y-2">
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 overflow-x-auto">
         {activeFilters.length > 0 && (
           <div className="flex space-x-2">
             {activeFilters.map((filter, index) => (
@@ -102,12 +102,14 @@ const FilterBar: React.FC<FilterBarProps> = ({
             ))}
           </div>
         )}
-        <button
-          className="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-800 hover:shadow-md hover:border-2"
-          onClick={handleAddFilterButtonClick}
-        >
-          + Add Filter
-        </button>
+        {activeFilters.length < FILTER_OPTIONS.length && (
+          <button
+            className="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-800 hover:shadow-md hover:border-2 text-nowrap"
+            onClick={handleAddFilterButtonClick}
+          >
+            + Add Filter
+          </button>
+        )}
       </div>
       {dropdownState.visible && (
         <FilterDropdown
@@ -115,9 +117,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           optionsByKey={filterOptionsByKey}
           selectedFilter={selectedFilter}
           onClose={handleDropdownClose}
-          selectedValues={
-            activeFilters.find((filter) => filter.key === selectedFilter)?.value
-          }
+          activeFilters={activeFilters}
           allowBack={dropdownState.allowBack}
         />
       )}

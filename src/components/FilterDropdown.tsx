@@ -10,7 +10,7 @@ interface FilterDropdownProps {
   optionsByKey: { [key: string]: string[] };
   selectedFilter: string | null;
   onClose: () => void;
-  selectedValues: string[] | undefined;
+  activeFilters: Filter[];
   allowBack: boolean;
 }
 
@@ -19,13 +19,23 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   optionsByKey,
   selectedFilter,
   onClose,
-  selectedValues,
+  activeFilters,
   allowBack,
 }) => {
   const [internalSelectedFilter, setInternalSelectedFilter] = useState<
     string | null
   >(selectedFilter);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const selectedValues = activeFilters.find(
+    (filter) => filter.key === selectedFilter
+  )?.value;
+
+  const activeFilterSet = new Set(activeFilters.map(({ key }) => key));
+
+  const inactiveFilters = FILTER_OPTIONS.filter(
+    ({ key }) => !activeFilterSet.has(key)
+  );
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -64,7 +74,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 
   const renderFilterOptions = () => (
     <ul className="space-y-2 p-2">
-      {FILTER_OPTIONS.map((option) => (
+      {inactiveFilters.map((option) => (
         <li key={option.name}>
           <button
             className="flex items-center space-x-2 p-2 w-full rounded hover:bg-gray-200"

@@ -15,7 +15,7 @@ const FilterItem: React.FC<FilterItemProps> = ({
 }) => {
   return (
     <span
-      className="px-4 py-2 border-2 bg-gray-200 rounded-full hover:border-gray-800 hover:shadow-md cursor-pointer"
+      className="px-4 py-2 border-2 bg-gray-200 rounded-full hover:border-gray-800 hover:shadow-md cursor-pointer text-nowrap"
       onClick={onClick}
     >
       <strong>{FILTER_LABELS[filter.key]}</strong> is{" "}

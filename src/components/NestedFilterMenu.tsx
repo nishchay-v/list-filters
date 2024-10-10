@@ -66,7 +66,7 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-gray-300 rounded "
         />
       </div>
       <div className="flex-col h-80 overflow-y-auto p-2">
@@ -103,7 +103,7 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
           </div>
         </div>
       </div>
-      <div className="flex justify-between m-2 border-t-2 pt-2">
+      <div className="flex justify-between border-t-2 p-2">
         <button
           className=" p-2  text-gray-500 hover:text-gray-800"
           onClick={handleClearFilter}
