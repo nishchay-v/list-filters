@@ -2,6 +2,9 @@ import React, { useState, useMemo } from "react";
 import OptionComponent from "./OptionComponent";
 import { Filter } from "../types";
 
+// Assume searchOptions is imported or defined elsewhere
+import { searchOptions } from "../helpers";
+
 interface NestedFilterMenuProps {
   onSave: (filter: Filter) => void;
   onClose: () => void;
@@ -20,6 +23,7 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
   const [selectedOptions, setSelectedOptions] = useState<Set<string>>(
     new Set(selectedValues)
   );
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleCheckboxChange = (option: string) => {
     setSelectedOptions((prevSelected) => {
@@ -48,8 +52,23 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
     [selectedOptions]
   );
 
+  // Filtered options based on search query
+  const filteredOptions = useMemo(
+    () => searchOptions(options, searchQuery),
+    [options, searchQuery]
+  );
+
   return (
     <div>
+      <div className="p-2">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded"
+        />
+      </div>
       <div className="flex-col h-80 overflow-y-auto">
         {selectedOptionsArray.length > 0 && (
           <div className="p-2">
@@ -66,7 +85,7 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
         )}
         <div className="p-2">
           <h3 className="font-bold mb-2">All</h3>
-          {options.map((option) => (
+          {filteredOptions.map((option) => (
             <OptionComponent
               key={option}
               option={option}

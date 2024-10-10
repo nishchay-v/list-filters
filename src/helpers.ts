@@ -39,3 +39,10 @@ export const getFilteredData = (
     });
   });
 };
+
+// TODO: can optimize using Trie
+export const searchOptions = (options: string[], query: string): string[] => {
+  return options.filter((option) =>
+    option.toLowerCase().includes(query.toLowerCase())
+  );
+};
