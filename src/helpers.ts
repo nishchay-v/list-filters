@@ -36,14 +36,18 @@ export const getNestedFilterOptions = (
 };
 
 export const getFilteredData = (
-  catalogData: CatalogItem[],
-  activeFilters: Filter[]
+    catalogData: CatalogItem[],
+    activeFilters: Filter[]
 ): CatalogItem[] => {
-  return catalogData.filter((item) => {
-    return activeFilters.every((filter) => {
-      return filter.value.includes(item[filter.key]);
+    return catalogData.filter((item) => {
+        return activeFilters.every((filter) => {
+            const itemValue = item[filter.key];
+            if (Array.isArray(itemValue)) {
+                return itemValue.some((val) => filter.value.includes(val));
+            }
+            return filter.value.includes(itemValue);
+        });
     });
-  });
 };
 
 // TODO: can optimize using Trie

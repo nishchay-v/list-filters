@@ -13,8 +13,8 @@ const CardList: React.FC<CardListProps> = ({ cardItems }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const pageCount = Math.ceil(cardItems.length / PAGE_ITEMS_LIMIT);
   return (
-    <div className="h-full">
-      <div className="p-4 flex-col items-center">
+    <div>
+      <div className="p-4 pb-16 flex-col items-center">
         {cardItems &&
           cardItems
             .slice(
@@ -45,7 +45,7 @@ const CardList: React.FC<CardListProps> = ({ cardItems }) => {
             ))}
       </div>
       {pageCount && (
-        <div className="flex space-x-8 w-full justify-center p-4 border-gray-600 sticky bottom-0 bg-white shadow-inner">
+        <div className="flex space-x-8 w-full justify-center p-4 border-gray-600 fixed bottom-0 bg-white shadow-inner">
           {Array(pageCount)
             .fill(null)
             .map((_, pageIdx) => (
