@@ -1,4 +1,10 @@
+import { CiFilter } from "react-icons/ci";
+import { GoPerson } from "react-icons/go";
+import { CiPlug1 } from "react-icons/ci";
+import { CiShoppingTag } from "react-icons/ci";
+
 import { CatalogItem, Filter } from "./types";
+import { FILTER_KEYS } from "./constants";
 
 export const formatElapsedTime = (lastEdited: string): string => {
   const now = new Date();
@@ -45,4 +51,15 @@ export const searchOptions = (options: string[], query: string): string[] => {
   return options.filter((option) =>
     option.toLowerCase().includes(query.toLowerCase())
   );
+};
+
+const filterIconMap: Record<string, React.FC> = {
+  [FILTER_KEYS.COLLECTION]: CiFilter,
+  [FILTER_KEYS.CREATED_BY]: GoPerson,
+  [FILTER_KEYS.ACADEMY]: CiPlug1,
+  [FILTER_KEYS.CONTENT_TAGS]: CiShoppingTag,
+};
+
+export const getFilterIcon = (filterKey: string): React.FC => {
+  return filterIconMap[filterKey] || filterIconMap[FILTER_KEYS.COLLECTION];
 };

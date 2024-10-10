@@ -45,7 +45,7 @@ const CardList: React.FC<CardListProps> = ({ cardItems }) => {
             ))}
       </div>
       {pageCount && (
-        <div className="flex space-x-8 w-full justify-center p-4  border-t-2 border-gray-800 sticky bottom-0 bg-white">
+        <div className="flex space-x-8 w-full justify-center p-4 border-gray-600 sticky bottom-0 bg-white shadow-inner">
           {Array(pageCount)
             .fill(null)
             .map((_, pageIdx) => (

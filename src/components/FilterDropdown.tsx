@@ -4,6 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import NestedFilterMenu from "./NestedFilterMenu";
 import { FILTER_LABELS, FILTER_OPTIONS } from "../constants";
 import { Filter } from "../types";
+import { getFilterIcon } from "../helpers";
 
 interface FilterDropdownProps {
   onSave: (filter: Filter) => void;
@@ -74,16 +75,20 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 
   const renderFilterOptions = () => (
     <ul className="space-y-2 p-2">
-      {inactiveFilters.map((option) => (
-        <li key={option.name}>
-          <button
-            className="flex items-center space-x-2 p-2 w-full rounded hover:bg-gray-200"
-            onClick={() => setInternalSelectedFilter(option.key)}
-          >
-            <span>{option.name}</span>
-          </button>
-        </li>
-      ))}
+      {inactiveFilters.map((option) => {
+        const IconComponent = getFilterIcon(option.key);
+        return (
+          <li key={option.name}>
+            <button
+              className="flex items-center space-x-2 p-2 w-full rounded hover:bg-gray-200"
+              onClick={() => setInternalSelectedFilter(option.key)}
+            >
+              <IconComponent />
+              <span>{option.name}</span>
+            </button>
+          </li>
+        );
+      })}
     </ul>
   );
 
