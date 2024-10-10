@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaBook, FaQuestionCircle } from "react-icons/fa";
 import { formatElapsedTime } from "../helpers";
 import { CatalogItem } from "../types";
 
@@ -27,11 +26,11 @@ const CardList: React.FC<CardListProps> = ({ cardItems }) => {
                 className="flex items-center p-4 border-b border-gray-300"
               >
                 <div className="mr-4">
-                  {item.type === "Course" ? (
-                    <FaBook className="text-xl" />
-                  ) : (
-                    <FaQuestionCircle className="text-xl" />
-                  )}
+                  <img
+                    src={item.type === "Course" ? "catalog.svg" : "catalog2.svg"}
+                    alt={item.type === "Course" ? "Course Icon" : "Quiz Icon"}
+                    className="w-12 h-12"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">{item.title}</h3>
