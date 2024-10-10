@@ -11,6 +11,7 @@ interface FilterDropdownProps {
   selectedFilter: string | null;
   onClose: () => void;
   selectedValues: string[] | undefined;
+  allowBack: boolean;
 }
 
 const FilterDropdown: React.FC<FilterDropdownProps> = ({
@@ -19,6 +20,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   selectedFilter,
   onClose,
   selectedValues,
+  allowBack,
 }) => {
   const [internalSelectedFilter, setInternalSelectedFilter] = useState<
     string | null
@@ -41,41 +43,48 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     };
   }, []);
 
+  const shouldRenderBackButton = allowBack && internalSelectedFilter !== null;
+
+  const renderHeader = () => (
+    <div className="flex items-center mb-2 border-b border-gray-300">
+      {shouldRenderBackButton && (
+        <button className="p-2" onClick={() => setInternalSelectedFilter(null)}>
+          <IoIosArrowBack />
+        </button>
+      )}
+      <div className="flex-1">
+        <h4 className="text-m font-semibold p-2">
+          {internalSelectedFilter === null
+            ? "Add Filter"
+            : FILTER_LABELS[internalSelectedFilter]}
+        </h4>
+      </div>
+    </div>
+  );
+
+  const renderFilterOptions = () => (
+    <ul className="space-y-2 p-2">
+      {FILTER_OPTIONS.map((option) => (
+        <li key={option.name}>
+          <button
+            className="flex items-center space-x-2 p-2 w-full rounded hover:bg-gray-200"
+            onClick={() => setInternalSelectedFilter(option.key)}
+          >
+            <span>{option.name}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <div
       ref={dropdownRef}
       className="absolute top-full mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-10"
     >
-      <div className="flex items-center mb-2 border-b border-gray-300">
-        {internalSelectedFilter !== null && (
-          <button
-            className="p-2"
-            onClick={() => setInternalSelectedFilter(null)}
-          >
-            <IoIosArrowBack />
-          </button>
-        )}
-        <div className="flex-1">
-          <h4 className="text-m font-semibold p-2">
-            {internalSelectedFilter === null
-              ? "Add Filter"
-              : FILTER_LABELS[internalSelectedFilter]}
-          </h4>
-        </div>
-      </div>
+      {renderHeader()}
       {internalSelectedFilter === null ? (
-        <ul className="space-y-2 p-2">
-          {FILTER_OPTIONS.map((option) => (
-            <li key={option.name}>
-              <button
-                className="flex items-center space-x-2 p-2 w-full rounded hover:bg-gray-200"
-                onClick={() => setInternalSelectedFilter(option.key)}
-              >
-                <span>{option.name}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        renderFilterOptions()
       ) : (
         <NestedFilterMenu
           selectedFilter={internalSelectedFilter}

@@ -26,7 +26,7 @@ export const getNestedFilterOptions = (
   filterKey: string
 ): string[] => {
   const filterValues = catalogData.map((item) => item[filterKey]);
-  return Array.from(new Set(filterValues.flat()));
+  return Array.from(new Set(filterValues.flat().filter(Boolean)));
 };
 
 export const getFilteredData = (

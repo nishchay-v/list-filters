@@ -11,12 +11,20 @@ interface FilterBarProps {
   setActiveFilters: React.Dispatch<React.SetStateAction<Filter[]>>;
 }
 
+interface DropdownState {
+  visible: boolean;
+  allowBack: boolean;
+}
+
 const FilterBar: React.FC<FilterBarProps> = ({
   catalogData,
   activeFilters,
   setActiveFilters,
 }) => {
-  const [isDropdownVisible, setDropdownVisible] = useState<boolean>(false);
+  const [dropdownState, setDropdownState] = useState<DropdownState>({
+    visible: false,
+    allowBack: false,
+  });
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
   const handleAddFilter = (newFilter: Filter) => {
@@ -44,17 +52,30 @@ const FilterBar: React.FC<FilterBarProps> = ({
         filter.key === newFilter.key ? newFilter : filter
       )
     );
-    setDropdownVisible(false);
+    setDropdownState({
+      visible: false,
+      allowBack: false,
+    });
     setSelectedFilter(null);
   };
 
   const handleFilterClick = (filterKey: string) => {
     setSelectedFilter(filterKey);
-    setDropdownVisible(true);
+    setDropdownState({
+      visible: true,
+      allowBack: false,
+    });
+  };
+
+  const handleAddFilterButtonClick = () => {
+    setDropdownState({
+      visible: true,
+      allowBack: true,
+    });
   };
 
   const handleDropdownClose = () => {
-    setDropdownVisible(false);
+    setDropdownState({ visible: false, allowBack: false });
     setSelectedFilter(null);
   };
 
@@ -82,12 +103,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
         )}
         <button
           className="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-500 hover:shadow-md"
-          onClick={() => setDropdownVisible(true)}
+          onClick={handleAddFilterButtonClick}
         >
           + Add Filter
         </button>
       </div>
-      {isDropdownVisible && (
+      {dropdownState.visible && (
         <FilterDropdown
           onSave={handleAddFilter}
           optionsByKey={filterOptionsByKey}
@@ -96,6 +117,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           selectedValues={
             activeFilters.find((filter) => filter.key === selectedFilter)?.value
           }
+          allowBack={dropdownState.allowBack}
         />
       )}
     </div>
