@@ -5,18 +5,33 @@ import { FILTER_LABELS } from "../constants";
 interface FilterItemProps {
   filter: Filter;
   onClick: () => void;
+  onClear: () => void;
 }
 
-const FilterItem: React.FC<FilterItemProps> = ({ filter, onClick }) => {
+const FilterItem: React.FC<FilterItemProps> = ({
+  filter,
+  onClick,
+  onClear,
+}) => {
   return (
     <span
-      className="px-4 py-2 bg-blue-200 text-blue-800 rounded-full cursor-pointer"
+      className="px-4 py-2 border-2 bg-gray-200 rounded-full hover:border-gray-800 hover:shadow-md cursor-pointer"
       onClick={onClick}
     >
       <strong>{FILTER_LABELS[filter.key]}</strong> is{" "}
       {filter.value.length > 1
         ? `${filter.value[0]} +${filter.value.length - 1}`
         : filter.value[0]}
+      <span
+        role="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClear();
+        }}
+        className="ml-2 hover:text-gray-500"
+      >
+        X
+      </span>
     </span>
   );
 };

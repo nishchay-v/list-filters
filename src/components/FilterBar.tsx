@@ -97,12 +97,13 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 key={index}
                 filter={filter}
                 onClick={() => handleFilterClick(filter.key)}
+                onClear={() => handleAddFilter({ key: filter.key, value: [] })}
               />
             ))}
           </div>
         )}
         <button
-          className="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-500 hover:shadow-md"
+          className="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-800 hover:shadow-md hover:border-2"
           onClick={handleAddFilterButtonClick}
         >
           + Add Filter

@@ -69,33 +69,41 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
           className="w-full p-2 border border-gray-300 rounded"
         />
       </div>
-      <div className="flex-col h-80 overflow-y-auto">
+      <div className="flex-col h-80 overflow-y-auto p-2">
         {selectedOptionsArray.length > 0 && (
           <div className="p-2">
-            <h3 className="font-bold mb-2">Selected</h3>
-            {selectedOptionsArray.map((option) => (
+            <h3 className="font-mono font-bold text-sm text-gray-400 mb-2">
+              SELECTED
+            </h3>
+            <div className="p-1">
+              {selectedOptionsArray.map((option) => (
+                <OptionComponent
+                  key={option}
+                  option={option}
+                  isSelected={true}
+                  onChange={handleCheckboxChange}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        <div className="p-2">
+          <h3 className="font-mono font-bold text-sm text-gray-400 mb-2">
+            ALL
+          </h3>
+          <div className="p-1">
+            {filteredOptions.map((option) => (
               <OptionComponent
                 key={option}
                 option={option}
-                isSelected={true}
+                isSelected={selectedOptions.has(option)}
                 onChange={handleCheckboxChange}
               />
             ))}
           </div>
-        )}
-        <div className="p-2">
-          <h3 className="font-bold mb-2">All</h3>
-          {filteredOptions.map((option) => (
-            <OptionComponent
-              key={option}
-              option={option}
-              isSelected={selectedOptions.has(option)}
-              onChange={handleCheckboxChange}
-            />
-          ))}
         </div>
       </div>
-      <div className="flex justify-between m-2">
+      <div className="flex justify-between m-2 border-t-2 pt-2">
         <button
           className=" p-2  text-gray-500 hover:text-gray-800"
           onClick={handleClearFilter}
@@ -103,7 +111,7 @@ const NestedFilterMenu: React.FC<NestedFilterMenuProps> = ({
           Clear
         </button>
         <button
-          className=" p-2  text-gray-500 hover:text-gray-800"
+          className=" py-2 px-4 bg-gray-800 text-white rounded-full hover:bg-gray-400"
           onClick={handleApplyFilter}
         >
           Apply

@@ -13,11 +13,17 @@ const OptionComponent: React.FC<OptionComponentProps> = ({
 }) => {
   return (
     <div key={option} className="flex items-center mb-1 p-1 justify-between">
-      <span className="mr-2">{option}</span>
+      <span
+        className={isSelected ? "text-gray-800 font-semibold" : "text-gray-600"}
+      >
+        {option}
+      </span>
       <input
         type="checkbox"
         checked={isSelected}
         onChange={() => onChange(option)}
+        // TODO: checkbox styles
+        className=""
       />
     </div>
   );
